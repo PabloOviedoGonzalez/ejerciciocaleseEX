@@ -56,6 +56,10 @@ public class PlayerStats
     public void AddToStructure(GameObject o)
     {
         gemsQueue.Enqueue(o);
+        if(gemsQueue.Count >= 6)
+        {
+            throw new StructureLlenaEmptyException();
+        }
     }
 
     // (EJ) construye el metodo que devuelve una bala de la estructura de datos. Si está vacía, lanza una excepcion

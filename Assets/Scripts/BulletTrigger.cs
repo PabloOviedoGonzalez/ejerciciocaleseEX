@@ -16,7 +16,16 @@ public class BulletTrigger : MonoBehaviour
 
         if(pC)
         {
-            pC.stats.AddToStructure(gameObject);
+            try
+            {
+                pC.stats.AddToStructure(gameObject);
+            }
+            catch(StructureLlenaEmptyException e)
+            {
+                Debug.LogWarning(e.Message);
+                return;
+            }
+           
             Destroy(this); // elimina este componente de la bala, ya que no lo necesitamos mas
             gameObject.SetActive(false);
         }
