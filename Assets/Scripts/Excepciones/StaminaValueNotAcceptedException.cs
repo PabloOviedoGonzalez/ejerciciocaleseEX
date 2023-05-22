@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization;
 
+
+[Serializable]
 public class StaminaValueNotAcceptedException : Exception
 {
     // Start is called before the first frame update

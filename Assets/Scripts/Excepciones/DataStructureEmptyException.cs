@@ -4,10 +4,13 @@ using UnityEngine;
 using System;
 using System.Runtime.Serialization;
 
+
+
+[Serializable]
 public class DataStructureEmptyException : Exception
 {
     // Start is called before the first frame update
-    public DataStructureEmptyException() : base("Health value not accepted")
+    public DataStructureEmptyException() : base("Estructura vacía")
     {
 
     }

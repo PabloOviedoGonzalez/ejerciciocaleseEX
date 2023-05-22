@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log("Valor de stamina o vida no acceptado");
+            Debug.LogWarning(e.Message);
             maxStamina = maxHealth = 100;
             stats = new PlayerStats(maxHealth, maxStamina);
         }
@@ -103,6 +103,23 @@ public class PlayerController : MonoBehaviour
     // Recuerda controlar las excepciones con los correspondientes 'try-catch'
     void Shoot()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject gema = null;
+            try
+            {
+                 gema = stats.GetBullet();
+            }
+            catch(DataStructureEmptyException e)
+            {
+                Debug.LogWarning(e.Message);
+                return;
+            }
+            
+            gema.SetActive(true);
+            Bullet b = gema.AddComponent<Bullet>();
+            gema.transform.position = transform.position;
+            b.SetXDirection(lastX);
+        }
     }
 }
